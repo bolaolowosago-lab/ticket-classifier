@@ -10,7 +10,7 @@ Classifies IT support tickets into categories from the ticket text alone. Built 
 I work help desk, so I see how much time goes into sorting and routing tickets before anyone fixes anything. This tests how well a model can do the first triage step.
 
 ## Data
-Public ticket dataset from Kaggle: _add dataset name and link here_. No data from my employer was used.
+Public ticket dataset from Kaggle: [IT Service Ticket Classification Dataset](https://www.kaggle.com/datasets/adisongoh/it-service-ticket-classification-dataset) by adisongoh on Kaggle. No data from my employer was used.
 - 47,837 tickets across 8 categories after cleaning
 - Exact duplicate tickets removed before splitting so the same ticket can't appear in both train and test
 - Stratified 80/20 train/test split, fixed seed
