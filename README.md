@@ -27,14 +27,14 @@ Public ticket dataset from Kaggle: [IT Service Ticket Classification Dataset](ht
 |---|---|---|
 | Majority class | 0.2847 | n/a |
 | TF-IDF + LogReg | 0.8546 | 0.8578 |
-| DistilBERT | _fill_ | _fill_ |
+| DistilBERT | DistilBERT | 0.8880 | 0.8861 |
 
 Macro F1 is the number to look at. Accuracy hides weak performance on small categories. The baseline's 5-fold CV macro F1 on the training set was 0.851, which closely matches the test score.
 
 ![confusion matrix](results/baseline_confusion_matrix.png)
 
-## Error analysis
-The baseline gets about 14.5% of test tickets wrong. Looking at the most confident mistakes, they fall into three groups. First, overlapping categories: tickets about buying hardware (e.g. "new monitor purchase po") are labeled Hardware but predicted as Purchase, and the text really fits both. Second, Miscellaneous acts as a catch-all, so tickets labeled that way get confidently assigned to specific categories like Access or Internal Project. Third, the source text is heavily cleaned and sometimes close to meaningless, and the model can still return very high confidence on it, so confidence alone isn't a reliable signal to trust a prediction. Administrative rights had the lowest precision (0.72), which fits the overlap problem. Next steps: test whether a transformer separates the overlapping categories better, and add a confidence threshold that sends uncertain tickets to a human.
+## Error analysis 
+DistilBERT improved on the baseline by about 3 points on both accuracy (0.888 vs 0.855) and macro F1 (0.886 vs 0.858). The biggest gain was on Administrative rights, where precision rose from 0.72 to 0.84, though recall dipped slightly (0.84 to 0.80). Miscellaneous also improved (F1 0.82 to 0.85). This is a single training run, so I'd treat the gap as real but not precise. The simple model still has a place: it trains in seconds on a laptop and powers the live demo, while DistilBERT took about 20 minutes on a GPU. Next steps: add a confidence threshold that routes uncertain tickets to a human, and try class weighting for the transformer.
 
 ## Run it yourself
 ```bash
