@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+.DS_Store
+# raw data and big model files stay out of git
+data/*.csv
+models/distilbert/
+checkpoints/
+data/*
+!data/.gitkeep
