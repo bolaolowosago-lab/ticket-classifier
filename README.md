@@ -2,7 +2,7 @@
 
 Classifies IT support tickets into categories from the ticket text alone. Built as an end-to-end NLP project: cleaning, a baseline, a fine-tuned transformer, error analysis, and a live demo.
 
-**Live demo:** _add your Streamlit link here_
+**Live demo:** https://ticket-classifier-fdjq2z8x8djyydjnmzkniu.streamlit.app 
 
 ![app screenshot](results/app_screenshot.png)
 
